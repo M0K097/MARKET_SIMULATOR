@@ -1,0 +1,14 @@
+/home/m0k0/Desktop/Abschluss_Projekt/market_simulator/bin/Debug/net8.0/market_simulator
+/home/m0k0/Desktop/Abschluss_Projekt/market_simulator/bin/Debug/net8.0/market_simulator.deps.json
+/home/m0k0/Desktop/Abschluss_Projekt/market_simulator/bin/Debug/net8.0/market_simulator.runtimeconfig.json
+/home/m0k0/Desktop/Abschluss_Projekt/market_simulator/bin/Debug/net8.0/market_simulator.dll
+/home/m0k0/Desktop/Abschluss_Projekt/market_simulator/bin/Debug/net8.0/market_simulator.pdb
+/home/m0k0/Desktop/Abschluss_Projekt/market_simulator/obj/Debug/net8.0/market_simulator.GeneratedMSBuildEditorConfig.editorconfig
+/home/m0k0/Desktop/Abschluss_Projekt/market_simulator/obj/Debug/net8.0/market_simulator.AssemblyInfoInputs.cache
+/home/m0k0/Desktop/Abschluss_Projekt/market_simulator/obj/Debug/net8.0/market_simulator.AssemblyInfo.cs
+/home/m0k0/Desktop/Abschluss_Projekt/market_simulator/obj/Debug/net8.0/market_simulator.csproj.CoreCompileInputs.cache
+/home/m0k0/Desktop/Abschluss_Projekt/market_simulator/obj/Debug/net8.0/market_simulator.dll
+/home/m0k0/Desktop/Abschluss_Projekt/market_simulator/obj/Debug/net8.0/refint/market_simulator.dll
+/home/m0k0/Desktop/Abschluss_Projekt/market_simulator/obj/Debug/net8.0/market_simulator.pdb
+/home/m0k0/Desktop/Abschluss_Projekt/market_simulator/obj/Debug/net8.0/market_simulator.genruntimeconfig.cache
+/home/m0k0/Desktop/Abschluss_Projekt/market_simulator/obj/Debug/net8.0/ref/market_simulator.dll
