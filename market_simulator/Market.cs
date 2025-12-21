@@ -1,21 +1,14 @@
-﻿//====> MARKET SIMULATION
-Market test_market = new Market();
-
-test_market.create_limit_order_to_buy(10,30);
-test_market.create_limit_order_to_buy(40,10);
-test_market.create_limit_order_to_buy(30,1);
-test_market.create_limit_order_to_buy(1,30);
-test_market.create_limit_order_to_sell(1,50);
-test_market.book.show_orderbook();
-test_market.complete_one_cycle();
-
-
-
-public class Market
+﻿public class Market
 {
 	DateTime market_time = DateTime.Now;
-	int market_ticks = 0;
 	public Orderbook book { private set; get;}
+
+	public void create_market_order(order_type type, decimal price)
+	{
+		market_time = DateTime.Now;
+		Order market_order = new Order(000,type,price,1,market_time);
+		book.execute_market_order(market_order);
+	}	
 
 	public void create_limit_order_to_buy(decimal price, double amount)
 	{

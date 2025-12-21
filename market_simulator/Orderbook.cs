@@ -99,6 +99,59 @@ public class Orderbook
 			}
 	}
 
+	public void execute_market_order(Order market_order)
+	{
+		Console.WriteLine($"market order was placed: Type:[{market_order.type}] ---> Total_Value: {market_order.price} at Time:{market_order.time}");
+		sort_orders();
+		var o = market_order;
+		var orders_to_match = new List<Order>();
+		if (o.type == order_type.bid)
+		{
+			orders_to_match = asks;
+		}
+		else if (o.type == order_type.ask)
+		{
+			orders_to_match = bids;
+		}
+
+		if(orders_to_match.Count > 0)
+		{
+			Order best_execution = orders_to_match.First();
+
+
+
+		var capital = o.price;
+		while(capital >= 0)
+		{
+			if (capital >= best_execution.price)
+			{
+
+			Console.WriteLine($"MarketOrder:{capital}");
+			capital -= best_execution.price;
+			best_execution.amount--;
+
+			if (best_execution.amount <= 0)
+			{
+				var old_price = best_execution.price;
+				orders_to_match.Remove(best_execution);
+				if(orders_to_match.Count() > 0)
+					best_execution = orders_to_match.First();
+				else
+					Console.WriteLine("market order got canceled because market not liquid");
+
+				Console.WriteLine($"price slipping from:{old_price} to => {best_execution.price}");
+			}
+			}
+			else
+			{
+				break;
+			}
+		}
+		}
+		Console.WriteLine("MARKET ORDER got executed");
+
+	}
+
 	public void match_orders()
 	{
 		
