@@ -1,0 +1,41 @@
+{
+  "Files": [
+    {
+      "Id": "/home/m0k0/Desktop/Abschluss_Projekt/market_ui/bin/Debug/net8.0/wwwroot/_framework/blazor.webassembly.js",
+      "PackagePath": "staticwebassets/_framework/blazor.webassembly.js"
+    },
+    {
+      "Id": "/home/m0k0/Desktop/Abschluss_Projekt/market_ui/obj/Debug/net8.0/compressed/hv0b0kv7ye.gz",
+      "PackagePath": "staticwebassets/_framework/blazor.webassembly.js.gz"
+    },
+    {
+      "Id": "/home/m0k0/Desktop/Abschluss_Projekt/market_ui/wwwroot/css/app.css",
+      "PackagePath": "staticwebassets/css/app.css"
+    },
+    {
+      "Id": "/home/m0k0/Desktop/Abschluss_Projekt/market_ui/wwwroot/icon-192.png",
+      "PackagePath": "staticwebassets/icon-192.png"
+    },
+    {
+      "Id": "/home/m0k0/Desktop/Abschluss_Projekt/market_ui/wwwroot/index.html",
+      "PackagePath": "staticwebassets/index.html"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.build.market_ui.props",
+      "PackagePath": "build\\market_ui.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.market_ui.props",
+      "PackagePath": "buildMultiTargeting\\market_ui.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.market_ui.props",
+      "PackagePath": "buildTransitive\\market_ui.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.market_ui.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
