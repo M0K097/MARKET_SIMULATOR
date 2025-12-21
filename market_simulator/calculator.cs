@@ -34,7 +34,6 @@ public class market_engine
 			}
 
 		}
-		Console.WriteLine("hey");
 		for(int m = 0; m < market_orders_per_cycle ; m++)
 		{
 			var type = dice.Next(market_regime);

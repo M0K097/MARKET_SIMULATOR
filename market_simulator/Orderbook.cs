@@ -32,20 +32,37 @@ public class Orderbook
 	public void show_orders(List<Order> orders)
 	{
 		int counter = 0;
+		int max = 10;
 		foreach (Order o in orders)
 		{
-			counter++;
-			string info = "";
-			info += $"{counter}->ID:{o.id}Type:{o.type} Price:{o.price} Amount:{o.amount} Time:{o.time} ";
-			Console.WriteLine(info);
+			if (counter <= max)
+			{
+				counter++;
+				string info = "";
+				info += $"{counter}->ID:{o.id} Amount:{o.amount} Price:{o.price}";
+				Console.WriteLine(info);
+			}
 		}
 	}
 	public void show_orderbook()
 	{
+		sort_orders();
+		var average_price = 0m;
+		if(bids.Count() > 0 && asks.Count() > 0)
+		{
+			var highest_bid = bids.First();
+			var lowest_ask = asks.First();
+			average_price = (highest_bid.price + lowest_ask.price) / 2;
+		}
+
+		Console.Clear();
 		Console.WriteLine($"____ASK'S____[{asks.Count()}]");
+		asks.Reverse();	
 		show_orders(asks);
+		Console.WriteLine($"PRICE ------------------------------>"+ average_price);
 		Console.WriteLine($"____BIDS'S____[{bids.Count()}]");
 		show_orders(bids);
+		
 	}
 
 	public void sort_orders()
@@ -137,7 +154,10 @@ public class Orderbook
 				if(orders_to_match.Count() > 0)
 					best_execution = orders_to_match.First();
 				else
+				{
 					Console.WriteLine("market order got canceled because market not liquid");
+				break;
+				}
 
 				Console.WriteLine($"price slipping from:{old_price} to => {best_execution.price}");
 			}
