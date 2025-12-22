@@ -13,7 +13,7 @@ public class market_engine
 
 		for(int i = 0; i < limit_orders_per_cycle ; i++)
 		{
-			var type = dice.Next(market_regime + 1);
+			var type = dice.Next(market_regime);
 			var price = dice.Next(max_price_generated + 1);
 			var amount = dice.Next(max_amount_generated + 1);
 			Console.WriteLine($"random order data = type:{type} price:{price}, amount:{amount}");
@@ -29,7 +29,7 @@ public class market_engine
 
 		for(int m = 0; m < market_orders_per_cycle ; m++)
 		{
-			var type = dice.Next(market_regime + 1);
+			var type = dice.Next(market_regime);
 			var price = dice.Next(max_price_generated + 1);
 			var amount = dice.Next(max_amount_generated + 1);
 			Console.WriteLine("creating market order...");
