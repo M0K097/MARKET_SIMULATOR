@@ -18,7 +18,5 @@ public class Order
 		this.price = price;
 		this.amount = amount;
 		this.time = time;
-		
 	}
-
 }
