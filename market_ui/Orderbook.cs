@@ -4,15 +4,12 @@ public class Orderbook
 	public List<Order> asks = new List<Order>();
 
 	int id_counter = 0;
-
-
 	public void create_order(order_type type, decimal price,double amount,DateTime time)
 	{
 		id_counter++;
 		Order created_order = new Order(id_counter, type, price, amount ,time);
 		Console.WriteLine($"new order was created with ID => {id_counter}");
 		place_order(created_order);
-
 	}	
 
 	public void place_order(Order order)
@@ -44,8 +41,9 @@ public class Orderbook
 			}
 		}
 	}
-	public decimal get_average_price()
+	public void show_orderbook()
 	{
+		sort_orders();
 		var average_price = 0m;
 		if(bids.Count() > 0 && asks.Count() > 0)
 		{
@@ -53,18 +51,11 @@ public class Orderbook
 			var lowest_ask = asks.First();
 			average_price = (highest_bid.price + lowest_ask.price) / 2;
 		}
-		return average_price;
 
-
-	}
-	public void show_orderbook()
-	{
-		sort_orders();
 		Console.Clear();
 		Console.WriteLine($"____ASK'S____[{asks.Count()}]");
 		asks.Reverse();	
 		show_orders(asks);
-		var average_price = get_average_price();
 		Console.WriteLine($"PRICE ------------------------------>"+ average_price);
 		Console.WriteLine($"____BIDS'S____[{bids.Count()}]");
 		show_orders(bids);
@@ -75,7 +66,6 @@ public class Orderbook
 	{
 		var sorted_asks = asks.OrderBy(order => order.price)
 			.ThenBy(order => order.time).ToList();
-
 
 		var sorted_bids = bids.OrderByDescending(order => order.price)
 			.ThenBy(order => order.time).ToList();
@@ -97,7 +87,6 @@ public class Orderbook
 					highest_bid.amount--;
 					lowest_ask.amount--;
 					capital -= lowest_ask.price;
-
 				}
 
 				if (highest_bid.amount <= 0)
@@ -107,6 +96,7 @@ public class Orderbook
 					if (bids.Count() > 0)
 					highest_bid = bids.First();
 				}
+
 				if(lowest_ask.amount <= 0)
 				{
 					asks.Remove(lowest_ask);
@@ -114,6 +104,7 @@ public class Orderbook
 					if(asks.Count() > 0)
 					lowest_ask = asks.First();
 				}
+
 				if(asks.Count() == 0 || bids.Count() == 0)
 				{
 					break;
@@ -130,63 +121,60 @@ public class Orderbook
 		var orders_to_match = new List<Order>();
 		if (o.type == order_type.bid)
 		{
-			orders_to_match = asks;
+			orders_to_match = bids;
 		}
 		else if (o.type == order_type.ask)
 		{
-			orders_to_match = bids;
+			orders_to_match = asks;
+			orders_to_match.Reverse();
 		}
 
 		if(orders_to_match.Count > 0)
 		{
 			Order best_execution = orders_to_match.First();
-
-
-
-		var capital = o.price;
-		while(capital >= 0)
-		{
-			if (capital >= best_execution.price)
+			var capital = o.price;
+			while(capital >= 0)
 			{
+				if (capital >= best_execution.price)
+				{
 
-			Console.WriteLine($"MarketOrder:{capital}");
-			capital -= best_execution.price;
-			best_execution.amount--;
+					Console.WriteLine($"MarketOrder:{capital}");
+					capital -= best_execution.price;
+					best_execution.amount--;
 
-			if (best_execution.amount <= 0)
-			{
-				var old_price = best_execution.price;
-				orders_to_match.Remove(best_execution);
+				if (best_execution.amount <= 0)
+				{
+					var old_price = best_execution.price;
+					orders_to_match.Remove(best_execution);
+
 				if(orders_to_match.Count() > 0)
 					best_execution = orders_to_match.First();
 				else
 				{
 					Console.WriteLine("market order got canceled because market not liquid");
-				break;
+					break;
 				}
 
 				Console.WriteLine($"price slipping from:{old_price} to => {best_execution.price}");
+				}
+				}
+				else
+				{
+					break;
+				}
 			}
-			}
-			else
-			{
-				break;
-			}
-		}
 		}
 		Console.WriteLine("MARKET ORDER got executed");
-
 	}
 
 	public void match_orders()
 	{
 		
 		sort_orders();
-
-		if (bids.Count > 0 && asks.Count() > 0)
+		if (bids.Count() > 0 && asks.Count() > 0)
 		{
 			process();
 		}
-}
+	}
 }
 

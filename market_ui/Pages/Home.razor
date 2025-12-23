@@ -5,31 +5,27 @@
 <h1>ScottPlot 5 in Blazor</h1>
 
 <BlazorPlot @ref=BlazorPlot Style="width: 400px; height: 300px;" />
+<button @onclick="run_engine">click</button>
 
 @code {
 
     BlazorPlot BlazorPlot { get; set; } = new();
     Market m {get;set;} = new Market();
-    
+    market_engine engine  {get;set;}
+    List<double> listY = new List<double>();
 
+	    protected override void OnAfterRender(bool firstRender)
+	    {
+    		engine = new market_engine(50,20,100,100,100,m);
+	    }
+	    
+	    public async void run_engine()
+	    {
 
-    protected override void OnAfterRender(bool firstRender)
-    {
-	List<double> listX = new();
-	List<double> listY = new();
-	market_engine engine = new market_engine(50,20,100,100,100,m);
-
-
-	int max_iterations = 10;
-	for(int iteration = 0; iteration < max_iterations; iteration++)
-	{
-		engine.execute_one_cycle();
-		Orderbook b = m.complete_one_cycle();
-		listX.Add((double)iteration);
-		listY.Add((double)b.get_average_price());
-	}
-	listX.ToArray();
-	listY.ToArray();
-	BlazorPlot.Plot.Add.Signal(listY);
-    }
+			engine.create_random_orders();
+			m.complete_one_cycle();
+			listY.Add((double)m.book.bids[0].price);	
+			BlazorPlot.Plot.Add.Signal(listY);
+			await InvokeAsync(() => BlazorPlot.Refresh());
+	    }
 }

@@ -10,14 +10,14 @@
 		book.execute_market_order(market_order);
 	}	
 
-	public void create_limit_order_to_buy(decimal price, double amount)
+	public void create_limit_order_to_sell(decimal price, double amount)
 	{
 		market_time = DateTime.Now;
 		Console.WriteLine("creating limit oder to buy");
 		book.create_order(order_type.ask, price, amount, market_time);
 
 	}
-	public void create_limit_order_to_sell(decimal price, double amount)
+	public void create_limit_order_to_buy(decimal price, double amount)
 	{
 		market_time = DateTime.Now;
 		Console.WriteLine("creating limit oder to sell");
@@ -25,11 +25,10 @@
 
 	}
 
-	public Orderbook complete_one_cycle()
+	public void complete_one_cycle()
 	{
 		book.match_orders();
 		book.show_orderbook();
-		return book;
 	}
 
 
