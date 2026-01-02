@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "market_ui",
   "resources": {
-    "hash": "sha256-8lR9hxRipOJwat2YctXmf4NWmvCpGGAyZmAhJz9XDBI=",
+    "hash": "sha256-Dow+cbLS31SXiOnQnH02oloEXqW2KtUnBpVV0uRTKOg=",
     "jsModuleNative": {
       "dotnet.native.8.0.22.apmixp8ysm.js": "sha256-K4XbJQoxGDlNoxFqmkMgwTqAM6vsMfnZYt8N/DcdOi0="
     },
@@ -214,10 +214,10 @@
       "mscorlib.wasm": "sha256-K9gNrsN9UmPqLs6J/FrkiKpmkVGnHjjqUsc7YGvesCY=",
       "netstandard.wasm": "sha256-4emjlXLM9qW3t2tlII20SDylBgG4ueI0wy9nh5FMd8g=",
       "System.Private.CoreLib.wasm": "sha256-2DN4v7I/tabltDEPdIO8sDBB0tY8zOm+0CvHbMssXW4=",
-      "market_ui.wasm": "sha256-CSvdPOfdCa/+oBWfHpUMZICTfn04glr9PnC+ChNogRk="
+      "market_ui.wasm": "sha256-2/EkxPXnUKKOl4IEVJ3eWERpKq99KlhZF0WtWtaiw24="
     },
     "pdb": {
-      "market_ui.pdb": "sha256-ItF7ZUmy4HzhQrmsYy2IhPr6J3QtdMKIPeK/3EtSkL0="
+      "market_ui.pdb": "sha256-YjEF7ZTcta2ulRXauI3muM0Nf16/xIeQE1IqisLByls="
     }
   },
   "cacheBootResources": true,
